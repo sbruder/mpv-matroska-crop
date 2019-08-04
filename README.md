@@ -18,6 +18,19 @@ Copy `matroska_crop.lua` into the `scripts` directory in your mpv config
 directory (defaults to `~/.config/mpv/` on Linux). If the directory doesn’t
 exist, create it.
 
+## Adding PixelCrop metadata
+
+If you want to add the PixelCrop metadata to already existing Matroska files
+you can use the `mkvpropedit` tool (included in mkvtoolnix):
+
+```
+mkvpropedit video.mkv --edit track:v1 --set pixel-crop-top=120 --set pixel-crop-bottom=120
+```
+
+For further information please consult the [man page of
+mkvpropedit](https://mkvtoolnix.download/doc/mkvpropedit.html) and the output
+of `mkvpropedit -l`.
+
 ## Dynamic control of hardware decoding
 
 Since cropping is not available with hardware decoding, this script can be
