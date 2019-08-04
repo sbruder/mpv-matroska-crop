@@ -79,6 +79,10 @@ function get_cropping(filepath, vid)
         return nil
     end
 
+    if data.container.supported == false then
+        return nil
+    end
+
     local tracks = data.tracks
     local video_tracks = filter(data.tracks, function(track) return track.type == 'video' end)
     local video_track = video_tracks[vid].properties
