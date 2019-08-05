@@ -72,6 +72,11 @@ function get_cropping(filepath, vid)
         return nil
     end
 
+    -- this happens if scrolling through a playlist fast
+    if mkvmerge_run.stdout == '' then
+        return nil
+    end
+
     local data, err = utils.parse_json(mkvmerge_run.stdout)
 
     if err ~= nil then
