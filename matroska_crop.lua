@@ -37,8 +37,10 @@ end
 -- MAIN FUNCIONS
 function handle_file_load()
     filepath = mp.get_property('path')
-    -- check if filepath includes protocol handler (http, av) which mkvmerge cannot handle
-    if string.find(filepath, '://') == nil then
+    -- check if filepath
+    --  * does not includes protocol handler (http, av) which mkvmerge cannot handle
+    --  * ends with mkv extension
+    if string.find(filepath, '://') == nil and filepath:sub(-4) == ".mkv" then
         mp.unobserve_property(handle_vid_change)
         mp.observe_property('vid', 'number', handle_vid_change)
     end
@@ -81,10 +83,6 @@ function get_cropping(filepath, vid)
 
     if err ~= nil then
         msg.error(err)
-        return nil
-    end
-
-    if data.container.supported == false then
         return nil
     end
 
