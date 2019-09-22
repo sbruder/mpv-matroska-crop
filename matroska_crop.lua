@@ -59,7 +59,8 @@ function handle_vid_change()
             mp.command_native({'vf', 'add', crop_filter})
         else
             if options.dynamic_hwdec == true then
-                mp.command_native({'vf', 'clr', ''})
+                mp.command_native({'vf', 'add', '@matroska-crop:eq'})
+                mp.command_native({'vf', 'del', '@matroska-crop'})
                 mp.set_property('hwdec', default_hwdec)
             end
         end

@@ -46,9 +46,10 @@ dynamic_hwdec=yes
 
 Please not the absence of spaces around the equal sign.
 
-## Drawbacks
+## Known issues
 
  * It cannot crop the video while using hardware decoding (limitation of mpv)
  * It only works for local files (limitation of mkvmerge)  
    This could be solved by mpv exposing the needed matroska metadata
- * There might be an edge case I haven’t tested where it doesn’t work
+ * Custom filters are not applied when the video has PixelCrop metadata
+   (disable this script temporarily when you need to use custom filters).
